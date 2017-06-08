@@ -19,6 +19,7 @@ Running CMU Sphinx
 Ensure that sphinx is installed. On Ubuntu this is done with
 
 ::
+
    sudo apt-get install pocketsphinx pocketsphinx-en-us
 
 Then run ``transcribe_with_sphinx.sh``. It will produce
@@ -34,11 +35,13 @@ Copy user/password into auth.cfg in the [watson] section.
 Install python prereqs
 
 ::
+
    pip install watson-developer-cloud
 
 The run it with
 
 ::
+
    watson-transcribe.py podcast.flac
 
 .. note::
@@ -59,6 +62,7 @@ directory.
 Install python prereqs
 
 ::
+
    pip install google-cloud-storage google-cloud-speech
 
 Then run it as
@@ -67,6 +71,7 @@ Then run it as
 
    google-transcribe.py
 
+.. note::
 
-Comparing Results
-=================
+   It will take 20 - 30 minutes to run, it processes slightly faster
+   than realtime.
