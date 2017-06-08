@@ -29,7 +29,44 @@ Running Watson
 
 Sign up for IBM Bluemix and create a Watson Speech to Text instance.
 
+Copy user/password into auth.cfg in the [watson] section.
+
 Install python prereqs
 
 ::
    pip install watson-developer-cloud
+
+The run it with
+
+::
+   watson-transcribe.py podcast.flac
+
+.. note::
+
+   It will take 30 - 45 minutes to run, it processes slightly faster
+   than realtime.
+
+Running Google
+==============
+
+Sign up for Google Cloud and create a project and a service key. Go
+through all the setup around authentication -
+https://googlecloudplatform.github.io/google-cloud-python/stable/google-cloud-auth.html
+
+Create a key for the service, put that json in ``auth.json`` in this
+directory.
+
+Install python prereqs
+
+::
+   pip install google-cloud-storage google-cloud-speech
+
+Then run it as
+
+::
+
+   google-transcribe.py
+
+
+Comparing Results
+=================

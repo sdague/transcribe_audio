@@ -14,13 +14,15 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+import argparse
+import ConfigParser
 import json
 from os.path import join, dirname
 from watson_developer_cloud import SpeechToTextV1
 
 
 def get_auth():
-    config = configparser.RawConfigParser()
+    config = ConfigParser.RawConfigParser()
     config.read('auth.cfg')
     user = config.get('watson', 'username')
     password = config.get('watson', 'password')
@@ -51,7 +53,7 @@ def main():
         output = speech_to_text.recognize(
             audio_file, content_type='audio/flac', timestamps=True,
             word_confidence=True)
-        with open("watson-transcription.json", "w") as out:
+        with open("watson-transcript.json", "w") as out:
             print("Transcription done, written to watson-transcription.json")
             out.write(json.dumps(output, indent=2))
 
