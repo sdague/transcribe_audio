@@ -33,6 +33,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description='Transcribe audio with watson')
     parser.add_argument('file')
+    parser.add_argument('--customization', help="Process using a customized model id")
     args = parser.parse_args()
     return args
 
@@ -49,9 +50,12 @@ def main():
 
     with open(args.file, 'rb') as audio_file:
         print("Sending audio to watson to recognize, this will take 30+ minutes")
+        if args.customization is not None:
+            print("Using custom model {0}".format(args.customization))
         print("Please be patient and don't kill this process while running")
         output = speech_to_text.recognize(
             audio_file, content_type='audio/flac', timestamps=True,
+            customization_id=args.customization,
             word_confidence=True)
         with open("watson-transcript.json", "w") as out:
             print("Transcription done, written to watson-transcription.json")
