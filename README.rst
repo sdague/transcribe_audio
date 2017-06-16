@@ -38,11 +38,17 @@ Install python prereqs
 
    pip install watson-developer-cloud
 
-The run it with
+Then run it with
 
 ::
 
    watson-transcribe.py podcast.flac
+
+Optionally specify a pretrained customized language id
+
+::
+
+   watson-transcribe.py --customization a13780b0-52b7-1fe7-fbb7-77471c70c949 podcast.flac
 
 .. note::
 
