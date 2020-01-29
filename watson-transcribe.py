@@ -15,18 +15,18 @@
 # under the License.
 
 import argparse
-import ConfigParser
+import configparser
 import json
 from os.path import join, dirname
 from watson_developer_cloud import SpeechToTextV1
 
 
 def get_auth():
-    config = ConfigParser.RawConfigParser()
+    config = configparser.RawConfigParser()
     config.read('auth.cfg')
-    user = config.get('watson', 'username')
-    password = config.get('watson', 'password')
-    return (user, password)
+    iam_apikey = config.get('watson', 'iam_apikey')
+    url = config.get('watson', 'url')
+    return (iam_apikey, url)
 
 
 def parse_args():
@@ -41,9 +41,9 @@ def main():
     args = parse_args()
     (user, passwd) = get_auth()
     speech_to_text = SpeechToTextV1(
-        username=user,
-        password=passwd,
-        x_watson_learning_opt_out=False
+        iam_apikey=user,
+        url=passwd,
+
     )
 
     speech_to_text.get_model('en-US_BroadbandModel')
@@ -59,7 +59,7 @@ def main():
             word_confidence=True)
         with open("watson-transcript.json", "w") as out:
             print("Transcription done, written to watson-transcription.json")
-            out.write(json.dumps(output, indent=2))
+            out.write(json.dumps(output.get_result(), indent=2))
 
 if __name__ == "__main__":
     main()
