@@ -1,3 +1,3 @@
 [watson]
-username = UUID
-password = pass
+iam_apikey = "Place your api key here"
+url = "Place the url provided on the credentials page here"
