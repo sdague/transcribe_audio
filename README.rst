@@ -60,7 +60,7 @@ Running Google
 
 Sign up for Google Cloud and create a project and a service key. Go
 through all the setup around authentication -
-https://googlecloudplatform.github.io/google-cloud-python/stable/google-cloud-auth.html
+https://googlecloudplatform.github.io/google-cloud-python/latest/core/auth.html
 
 Create a key for the service, put that json in ``auth.json`` in this
 directory.
